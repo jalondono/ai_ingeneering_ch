@@ -1,0 +1,31 @@
+[project]
+name = "ai-ingeneering-ch"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "anthropic>=1.11.0",
+    "google>=3.0.0",
+    "google-genai>=2.27.0",
+    "openai>=3.23.0",
+    "protobuf>=7.36.2",
+    "pydantic>=2.13.5",
+    "python-dotenv>=1.2.4",
+]
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.6.2",
+    "ruff>=0.16.10",
+]
+
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "F",   # pyflakes (unused imports, undefined names)
+    "I",   # import sorting
+    "UP",  # modernize syntax for your Python version
+    "B",   # common bug patterns
+]
