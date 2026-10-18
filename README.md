@@ -116,9 +116,39 @@ key de ese proveedor.
 
 Las respuestas largas de los modelos y de las APIs están recortadas con `[…]`.
 
-### `python main.py` (OpenAI y Anthropic)
+### `python main.py` con la key de Anthropic (sin la de OpenAI)
 
-<!-- PENDIENTE: pegar la salida real de `python main.py` con las keys de OpenAI y Anthropic -->
+Modo normal y streaming contra la API real de Anthropic (`claude-sonnet-4-6`,
+`LLM_MAX_TOKENS=300`). Como faltaba `OPENAI_API_KEY`, OpenAI se omite sin cortar
+el programa.
+
+```
+⏭️  Se omite openai: falta OPENAI_API_KEY
+
+── anthropic · modo normal ──
+[anthropic] # Entropía
+
+La entropía es un concepto fundamental que aparece en varios campos, con matices distintos:
+
+## Termodinámica
+Es una medida del **desorden o dispersión de energía** en un sistema. La Segunda Ley de la Termodinámica establece que:
+- La entropía de un sistema aislado **siempre tiende a aumentar**
+- Los procesos naturales van espontáneamente hacia estados de mayor desorden
+- Por ejemplo: el hielo se derrite, el perfume se dispersa en el aire
+[…]
+
+── anthropic · streaming ──
+# La Entropía
+
+La entropía es un concepto fundamental que aparece en varios campos, principalmente en **termodinámica** y **teoría de la información**.
+
+---
+
+## En Termodinámica
+
+Es una medida del **desorden o dispersión de energía** en un sistema.
+[…]
+```
 
 ### `python main.py` sin API keys ni terminal
 
