@@ -1,6 +1,8 @@
 import logging
 from collections.abc import AsyncGenerator
+from typing import Self
 
+from backend import settings
 from backend.base import BaseLLMClient, LLMError
 from backend.clients.anthropic import AnthropicClient
 from backend.clients.gemini import GeminiClient
@@ -18,6 +20,25 @@ class AsyncLLMManager:
         self._client: BaseLLMClient = self._crear_cliente(config)
         self._fallback_client: BaseLLMClient | None = (
             self._crear_cliente(fallback) if fallback else None
+        )
+
+    @classmethod
+    def desde_entorno(cls, provider: Provider | None = None) -> Self:
+        """Arma el manager con la configuración del entorno (ver .env.example).
+
+        Sin `provider` usa el primero de LLM_PROVIDER, así que cambiar de OpenAI a
+        Anthropic es cambiar esa variable. Si LLM_FALLBACK_PROVIDER está definido,
+        se agrega como fallback.
+        """
+        provider = provider or settings.proveedores_configurados()[0]
+        fallback = settings.proveedor_fallback()
+        return cls(
+            settings.config_desde_entorno(provider),
+            fallback=(
+                settings.config_desde_entorno(fallback)
+                if fallback and fallback != provider
+                else None
+            ),
         )
 
     @staticmethod

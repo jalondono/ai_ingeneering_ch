@@ -1,0 +1,11 @@
+# Dependencias para correr main.py y los tests con pip:
+#   pip install -r requirements.txt
+anthropic>=1.11.0
+google-genai>=2.27.0
+openai>=3.23.0
+pydantic>=2.13.5
+python-dotenv>=1.2.4
+
+# tests
+pytest>=9.1.1
+pytest-asyncio>=1.4.0

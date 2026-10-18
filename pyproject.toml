@@ -4,10 +4,8 @@ version = "0.1.0"
 requires-python = ">=3.12"
 dependencies = [
     "anthropic>=1.11.0",
-    "google>=3.0.0",
     "google-genai>=2.27.0",
     "openai>=3.23.0",
-    "protobuf>=7.36.2",
     "pydantic>=2.13.5",
     "python-dotenv>=1.2.4",
 ]
@@ -15,6 +13,8 @@ dependencies = [
 [dependency-groups]
 dev = [
     "pre-commit>=4.6.2",
+    "pytest>=9.1.1",
+    "pytest-asyncio>=1.4.0",
     "ruff>=0.16.10",
 ]
 
@@ -29,3 +29,8 @@ select = [
     "UP",  # modernize syntax for your Python version
     "B",   # common bug patterns
 ]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+asyncio_mode = "auto"
